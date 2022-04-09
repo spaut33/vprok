@@ -1,8 +1,8 @@
 .env
-bin
-lib
-mbox
-.vscode
+/bin
+/lib
+/mbox
+/.vscode
 out.html
 all-orders.txt
 pyvenv.cfg
