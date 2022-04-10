@@ -13,6 +13,7 @@
 * [Конфигурация](#конфигурация)
 * [Данные, подаваемые на вход](#вход)
 * [Данные, получаемы на выходе](#выход)
+* [Roadmap](#roadmap)
 
 
 ### Зачем?
@@ -39,5 +40,58 @@ pip3 install pip install -r requirements.txt
 ./mbox/Перекресток-выполнен.mbox
 ```
 
+Необходимо создать базу данных (в скрипте используется PostgreSQL) и единственную таблицу, в которой будут храниться данные:
+
+```SQL
+-- Table: public.items
+
+-- DROP TABLE IF EXISTS public.items;
+
+CREATE TABLE IF NOT EXISTS public.items
+(
+    id integer NOT NULL GENERATED ALWAYS AS IDENTITY ( INCREMENT 1 START 1 MINVALUE 1 MAXVALUE 2147483647 CACHE 1 ),
+    order_id integer,
+    order_date timestamp with time zone,
+    item_name character varying(255) COLLATE pg_catalog."default",
+    item_qnty numeric(10,2),
+    item_price_1 numeric(10,2),
+    item_price numeric(10,2),
+    CONSTRAINT items_pkey PRIMARY KEY (id)
+)
+```
+
 ### Использование
 
+```shell
+python main.py
+```
+
+Скрипт найдет товары в письмах и сохранит их в СУБД.
+
+### Конфигурация
+
+Скрипт использует переменные окружения для доступа к SQL-серверу, пример файла .env, если скрипт был развернут в витруальном окружении:
+
+```shell
+HOSTNAME=localhost
+DB_NAME=vprok_db
+USERNAME=vprok_user
+PASSWORD=vprok_pass
+```
+
+### Данные, подаваемые на вход(#вход)
+
+Скрипт собирает данные из файла почтового ящика формата [mbox](https://ru.wikipedia.org/wiki/Mbox)
+Для почты gmail можно воспользоваться сначала фильтром и переместить все письма об успешной доставке заказа в отдельную папку
+почтового ящика, а затем воспользоваться [Google Takeout](https://takeout.google.com/), чтобы сохранить все письма из этой папки
+в формат mbox. 
+
+### Данные, получаемые на выходе(#вход)
+
+На выходе в данной версии скрипта получается заполненная данными таблица в СУБД.
+
+### Roadmap
+---
+
+В будущих версиях планируется полноценный веб-сервис с интерфейсом для загрузки файла mbox, выводом аналитики, графики,
+диаграммы и прочее.
