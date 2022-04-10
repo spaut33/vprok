@@ -49,7 +49,8 @@ pip3 install pip install -r requirements.txt
 
 CREATE TABLE IF NOT EXISTS public.items
 (
-    id integer NOT NULL GENERATED ALWAYS AS IDENTITY ( INCREMENT 1 START 1 MINVALUE 1 MAXVALUE 2147483647 CACHE 1 ),
+    id integer NOT NULL GENERATED ALWAYS AS IDENTITY ( INCREMENT 1 
+    START 1 MINVALUE 1 MAXVALUE 2147483647 CACHE 1 ),
     order_id integer,
     order_date timestamp with time zone,
     item_name character varying(255) COLLATE pg_catalog."default",
