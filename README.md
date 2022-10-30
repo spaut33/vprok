@@ -1,6 +1,6 @@
 # Впрок / Vprok
 
-<img alt="Python" src="https://img.shields.io/badge/Python-100%25-blue?logo=python"> <img alt="Updated" src="https://badges.pufler.dev/updated/spaut33/vprok?color=lightblue"> <img alt="Updated" src="https://badges.pufler.dev/created/spaut33/vprok?color=white">
+<img alt="Python" src="https://img.shields.io/badge/Python-100%25-blue?logo=python">
 
 ---
 Парсер писем с отчетом о доставке заказов онлайн-магазина Впрок/Перекресток
@@ -15,7 +15,7 @@
 * [Использование](#использование)
 * [Конфигурация](#конфигурация)
 * [Данные, подаваемые на вход](#Данные,-подаваемые-на-вход)
-* [Данные, получаемы на выходе](#Данные,-получаемые-на-выходе)
+* [Данные, получаемые на выходе](#Данные,-получаемые-на-выходе)
 * [Roadmap](#roadmap)
 
 
@@ -99,7 +99,6 @@ PASSWORD=vprok_pass
 На выходе в данной версии скрипта получается заполненная данными таблица в СУБД.
 
 ### Roadmap
-
 
 В будущих версиях планируется полноценный веб-сервис с интерфейсом для загрузки файла mbox, выводом аналитики, графики,
 диаграммы и прочее.
